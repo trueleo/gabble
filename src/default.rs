@@ -5,30 +5,30 @@ use std::fmt;
 use std::ops;
 
 #[derive(Debug)]
-pub struct Default(pub String);
+pub struct Gab(pub String);
 
-impl Distribution<Default> for Standard {
-    fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> Default {
-        Default(
+impl Distribution<Gab> for Standard {
+    fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> Gab {
+        Gab(
             generate(rng, Symbol::Alphabet, Symbol::Consonant, Some(6))
         )
     }
 }
 
-impl ops::Deref for Default {
+impl ops::Deref for Gab {
     type Target = String;
     fn deref(&self) -> &Self::Target {
         &self.0
     }
 }
 
-impl ops::DerefMut for Default {
+impl ops::DerefMut for Gab {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.0
     }
 }
 
-impl fmt::Display for Default {
+impl fmt::Display for Gab {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{}", self.0)
     }
@@ -38,11 +38,11 @@ impl fmt::Display for Default {
 mod tests {
     #[test]
     pub fn default() {
-        use crate::Default;
+        use crate::Gab;
         use rand::thread_rng;
         use rand::Rng;
         let mut rng = thread_rng();
-        let gib: Default = rng.gen();
+        let gib: Gab = rng.gen();
         assert!(gib.len() > 0);
         println!("large {}", gib);
     }

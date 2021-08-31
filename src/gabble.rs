@@ -48,9 +48,9 @@ mod tests {
         use crate::Symbol::*;
         let mut rng = thread_rng();
         let gib = Gabble::new()
+            .with_length(6)
             .starts_with(Consonant)
-            .ends_with(Alphabet)
-            .with_length(4);
+            .ends_with(Number(10..100));
         let word = gib.generate(&mut rng);
         assert!(word.len() > 0);
         println!("gabble {}", word);

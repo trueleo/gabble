@@ -1,11 +1,16 @@
-use std::ops::RangeInclusive;
+use std::ops::Range;
 
+///Represent units that makes up a psuedoword
 #[derive(Clone, Debug)]
 pub enum Symbol {
+    /// Vowel Syllable
     Vowel,
+    /// Consonant Syllable
     Consonant,
+    /// Alphabetical Syllable
     Alphabet,
-    Number(RangeInclusive<usize>)
+    /// Number between start..=end
+    Number(Range<usize>)
 }
 
 pub const INITIALS: [&'static str; 22] = [
