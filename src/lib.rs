@@ -29,8 +29,7 @@ use gabble::Gabble;
 use gabble::Syllable::{Alphabet, Consonant};
 use rand::thread_rng;
 let mut rng = thread_rng();
-// Generator configured to generate words
-// that starts with consonant syllable and ends with a number
+
 let gabble = Gabble::new()
     .with_length(10)
     .starts_with(Alphabet)
