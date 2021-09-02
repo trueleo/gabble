@@ -1,15 +1,18 @@
 use crate::generator::generate;
-use crate::Symbol;
+use crate::Syllable;
 use rand::distributions::{Distribution, Standard};
 use std::fmt;
 use std::ops;
 
+/// Pseudo-word of some specified minimum length N
+///
+/// Wrapper type around [`String`] which implements [`Distribution`](rand::distributions::Distribution)
 #[derive(Debug)]
 pub struct GabLength<const N: usize>(pub String);
 
 impl<const N: usize> Distribution<GabLength<{ N }>> for Standard {
     fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> GabLength<{ N }> {
-        GabLength(generate(rng, Symbol::Alphabet, Symbol::Alphabet, Some(N)))
+        GabLength(generate(rng, Syllable::Alphabet, Syllable::Alphabet, Some(N)))
     }
 }
 

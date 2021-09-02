@@ -1,9 +1,25 @@
 use crate::generator::generate;
-use crate::symbol::Symbol::{self, *};
+use crate::Syllable::{self, *};
+/// Generator type used for generating custom variant of pseudo-word
+/// ## Example
+/// ```
+/// use gabble::Gabble;
+/// use gabble::Syllable::{Alphabet, Consonant};
+/// use rand::thread_rng;
+/// let mut rng = thread_rng();
+/// //Generator configured to generate words
+/// //that starts with consonant syllable and ends with a number
+/// let gabble = Gabble::new()
+///     .with_length(10)
+///     .starts_with(Alphabet)
+///     .ends_with(Consonant);
+/// println!("customized answer to life is {}", gabble.generate(&mut rng));
+/// ```
+///
 pub struct Gabble {
-    start: Symbol,
-    end: Symbol,
-    length: Option<usize>,
+    pub start: Syllable,
+    pub end: Syllable,
+    pub length: Option<usize>,
 }
 
 impl Gabble {
@@ -23,13 +39,13 @@ impl Gabble {
         self
     }
 
-    pub fn starts_with(mut self, symbol: Symbol) -> Self {
-        self.start = symbol;
+    pub fn starts_with(mut self, syllable: Syllable) -> Self {
+        self.start = syllable;
         self
     }
 
-    pub fn ends_with(mut self, symbol: Symbol) -> Self {
-        self.end = symbol;
+    pub fn ends_with(mut self, syllable: Syllable) -> Self {
+        self.end = syllable;
         self
     }
 
@@ -45,12 +61,12 @@ mod tests {
     pub fn gabble() {
         use crate::Gabble;
         use rand::thread_rng;
-        use crate::Symbol::*;
+        use crate::Syllable::*;
         let mut rng = thread_rng();
         let gib = Gabble::new()
             .with_length(6)
-            .starts_with(Consonant)
-            .ends_with(Number(10..100));
+            .starts_with(Alphabet)
+            .ends_with(Consonant);
         let word = gib.generate(&mut rng);
         assert!(word.len() > 0);
         println!("gabble {}", word);

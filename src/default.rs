@@ -1,16 +1,19 @@
 use crate::generator::generate;
-use crate::Symbol;
+use crate::Syllable;
 use rand::distributions::{Distribution, Standard};
 use std::fmt;
 use std::ops;
 
+/// Pseudo-word of moderate length ( 6 to 15 chars )
+///
+/// Wrapper type around [`String`] which implements [`Distribution`](rand::distributions::Distribution)
 #[derive(Debug)]
 pub struct Gab(pub String);
 
 impl Distribution<Gab> for Standard {
     fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> Gab {
         Gab(
-            generate(rng, Symbol::Alphabet, Symbol::Consonant, Some(6))
+            generate(rng, Syllable::Alphabet, Syllable::Consonant, None)
         )
     }
 }
@@ -44,6 +47,6 @@ mod tests {
         let mut rng = thread_rng();
         let gib: Gab = rng.gen();
         assert!(gib.len() > 0);
-        println!("large {}", gib);
+        println!("gab {}", gib);
     }
 }
