@@ -3,8 +3,12 @@ name = "gabble"
 version = "0.1.0"
 authors = ["Satyam Singh <trueleo@protonmail.com>"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+license = "MIT"
+license-file = "LICENSE.md"
+description = "Library crate for generating random pseudo-words"
+readme = "README.md"
+repository = "https://github.com/trueleo/gabble/"
+keywords = ["gibberish", "random_word", "pseudo_words", "word_generation", "pronounceable"]
 
 [dependencies]
 rand = "0.8.*"
