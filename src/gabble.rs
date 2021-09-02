@@ -54,6 +54,11 @@ impl Gabble {
     }
 }
 
+impl Default for Gabble {
+    fn default() -> Self {
+        Self::new()
+    }
+}
 
 #[cfg(test)]
 mod tests {
