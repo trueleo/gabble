@@ -1,3 +1,4 @@
+This is the awesome project must read the instruction carefullly.
 # gabble
 ## Library crate for generating pseudo-word.
 ### Example
