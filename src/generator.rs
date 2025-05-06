@@ -46,11 +46,3 @@ pub fn generate<R: rand::Rng + ?Sized>(
 
     final_string
 }
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn fn_gabble() {
-        assert!(true)
-    }
-}

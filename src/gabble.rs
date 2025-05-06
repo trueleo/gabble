@@ -73,7 +73,7 @@ mod tests {
             .starts_with(Alphabet)
             .ends_with(Consonant);
         let word = gib.generate(&mut rng);
-        assert!(word.len() > 0);
+        assert!(!word.is_empty());
         println!("gabble {}", word);
     }
 }

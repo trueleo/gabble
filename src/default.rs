@@ -44,7 +44,7 @@ mod tests {
         use rand::Rng;
         let mut rng = rng();
         let gib: Gab = rng.random();
-        assert!(gib.len() > 0);
+        assert!(!gib.is_empty());
         println!("gab {}", gib);
     }
 }

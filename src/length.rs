@@ -49,7 +49,7 @@ mod tests {
         use rand::Rng;
         let mut rng = rng();
         let gib: GabLength<4> = rng.random();
-        assert!(gib.len() > 0);
+        assert!(!gib.is_empty());
         println!("length {}", gib);
     }
 }
