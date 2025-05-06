@@ -17,4 +17,4 @@ keywords = [
 ]
 
 [dependencies]
-rand = "0.8.*"
+rand = "0.9"

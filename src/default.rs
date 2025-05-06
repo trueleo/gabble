@@ -1,6 +1,6 @@
 use crate::generator::generate;
 use crate::Syllable;
-use rand::distributions::{Distribution, Standard};
+use rand::distr::{Distribution, StandardUniform};
 use std::fmt;
 use std::ops;
 
@@ -10,7 +10,7 @@ use std::ops;
 #[derive(Debug)]
 pub struct Gab(pub String);
 
-impl Distribution<Gab> for Standard {
+impl Distribution<Gab> for StandardUniform {
     fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> Gab {
         Gab(generate(rng, Syllable::Alphabet, Syllable::Consonant, None))
     }
@@ -40,10 +40,10 @@ mod tests {
     #[test]
     pub fn default() {
         use crate::Gab;
-        use rand::thread_rng;
+        use rand::rng;
         use rand::Rng;
-        let mut rng = thread_rng();
-        let gib: Gab = rng.gen();
+        let mut rng = rng();
+        let gib: Gab = rng.random();
         assert!(gib.len() > 0);
         println!("gab {}", gib);
     }

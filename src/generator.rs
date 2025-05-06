@@ -1,6 +1,6 @@
 use crate::Syllable;
 use crate::{FINALS, INITIALS, VOWELS};
-use rand::seq::SliceRandom;
+use rand::seq::IndexedRandom;
 
 pub fn generate<R: rand::Rng + ?Sized>(
     rng: &mut R,
@@ -10,7 +10,7 @@ pub fn generate<R: rand::Rng + ?Sized>(
 ) -> String {
     let mut curr_length = 0;
     let mut syllables = Vec::new();
-    let approx_length = length.unwrap_or_else(|| rng.gen_range(7..9));
+    let approx_length = length.unwrap_or_else(|| rng.random_range(7..9));
     let mut final_string = String::with_capacity(approx_length + 5);
 
     while curr_length < approx_length {
@@ -25,7 +25,7 @@ pub fn generate<R: rand::Rng + ?Sized>(
     match start {
         Syllable::Consonant => final_string += INITIALS.choose(rng).unwrap(),
         Syllable::Alphabet => {
-            if rng.gen_bool(0.65) {
+            if rng.random_bool(0.65) {
                 final_string += INITIALS.choose(rng).unwrap()
             }
         }
@@ -37,7 +37,7 @@ pub fn generate<R: rand::Rng + ?Sized>(
     match end {
         Syllable::Consonant => (),
         Syllable::Alphabet => {
-            if rng.gen_bool(0.35) {
+            if rng.random_bool(0.35) {
                 final_string += VOWELS.choose(rng).unwrap()
             }
         }

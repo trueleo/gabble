@@ -1,6 +1,6 @@
 use crate::generator::generate;
 use crate::Syllable;
-use rand::distributions::{Distribution, Standard};
+use rand::distr::{Distribution, StandardUniform};
 use std::fmt;
 use std::ops;
 
@@ -10,7 +10,7 @@ use std::ops;
 #[derive(Debug)]
 pub struct GabLength<const N: usize>(pub String);
 
-impl<const N: usize> Distribution<GabLength<{ N }>> for Standard {
+impl<const N: usize> Distribution<GabLength<{ N }>> for StandardUniform {
     fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> GabLength<{ N }> {
         GabLength(generate(
             rng,
@@ -45,10 +45,10 @@ mod tests {
     #[test]
     pub fn gablength() {
         use crate::GabLength;
-        use rand::thread_rng;
+        use rand::rng;
         use rand::Rng;
-        let mut rng = thread_rng();
-        let gib: GabLength<4> = rng.gen();
+        let mut rng = rng();
+        let gib: GabLength<4> = rng.random();
         assert!(gib.len() > 0);
         println!("length {}", gib);
     }
