@@ -65,8 +65,8 @@ mod tests {
     #[test]
     pub fn gabble() {
         use crate::Gabble;
-        use rand::thread_rng;
         use crate::Syllable::*;
+        use rand::thread_rng;
         let mut rng = thread_rng();
         let gib = Gabble::new()
             .with_length(6)

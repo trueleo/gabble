@@ -12,9 +12,7 @@ pub struct Gab(pub String);
 
 impl Distribution<Gab> for Standard {
     fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> Gab {
-        Gab(
-            generate(rng, Syllable::Alphabet, Syllable::Consonant, None)
-        )
+        Gab(generate(rng, Syllable::Alphabet, Syllable::Consonant, None))
     }
 }
 

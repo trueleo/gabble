@@ -8,7 +8,6 @@ pub fn generate<R: rand::Rng + ?Sized>(
     end: Syllable,
     length: Option<usize>,
 ) -> String {
-
     let mut curr_length = 0;
     let mut syllables = Vec::new();
     let approx_length = length.unwrap_or_else(|| rng.gen_range(7..9));
@@ -30,7 +29,7 @@ pub fn generate<R: rand::Rng + ?Sized>(
                 final_string += INITIALS.choose(rng).unwrap()
             }
         }
-        Syllable::Vowel => ()
+        Syllable::Vowel => (),
     }
 
     syllables.into_iter().for_each(|s| final_string += s);

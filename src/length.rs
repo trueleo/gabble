@@ -12,7 +12,12 @@ pub struct GabLength<const N: usize>(pub String);
 
 impl<const N: usize> Distribution<GabLength<{ N }>> for Standard {
     fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> GabLength<{ N }> {
-        GabLength(generate(rng, Syllable::Alphabet, Syllable::Alphabet, Some(N)))
+        GabLength(generate(
+            rng,
+            Syllable::Alphabet,
+            Syllable::Alphabet,
+            Some(N),
+        ))
     }
 }
 
