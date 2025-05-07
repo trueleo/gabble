@@ -8,7 +8,13 @@ license-file = "LICENSE.md"
 description = "Library crate for generating random pseudo-words"
 readme = "README.md"
 repository = "https://github.com/trueleo/gabble/"
-keywords = ["gibberish", "random_word", "pseudo_words", "word_generation", "pronounceable"]
+keywords = [
+    "gibberish",
+    "random_word",
+    "pseudo_words",
+    "word_generation",
+    "pronounceable",
+]
 
 [dependencies]
-rand = "0.8.*"
+rand = "0.9"

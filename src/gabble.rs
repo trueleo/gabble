@@ -65,15 +65,15 @@ mod tests {
     #[test]
     pub fn gabble() {
         use crate::Gabble;
-        use rand::thread_rng;
         use crate::Syllable::*;
-        let mut rng = thread_rng();
+        use rand::rng;
+        let mut rng = rng();
         let gib = Gabble::new()
             .with_length(6)
             .starts_with(Alphabet)
             .ends_with(Consonant);
         let word = gib.generate(&mut rng);
-        assert!(word.len() > 0);
+        assert!(!word.is_empty());
         println!("gabble {}", word);
     }
 }
